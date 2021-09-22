@@ -6,7 +6,7 @@
 /*   By: aachbaro <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/08 14:41:55 by aachbaro          #+#    #+#             */
-/*   Updated: 2021/09/16 17:38:58 by aachbaro         ###   ########.fr       */
+/*   Updated: 2021/09/22 14:28:02 by aachbaro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,16 +27,14 @@ int	add_link(t_link *stack, int data)
 	return (0);
 }
 
-void	init_stacks(t_objs *stacks)
+void	init_stacks(t_objs *stacks, int data)
 {
 	t_link	*elem1_sa;
-//	t_link	*elem1_sb;
 
 	elem1_sa = malloc(sizeof(t_link));
-	elem1_sa->data = 42;
+	elem1_sa->data = data;
 	elem1_sa->next = 0;
 	stacks->stack_a = elem1_sa;
-//	stacks->stack_b = elem1_sb;
 }
 
 void	aff_list(t_link *stack)

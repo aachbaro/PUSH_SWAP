@@ -6,7 +6,7 @@
 /*   By: aachbaro <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/17 11:59:27 by aachbaro          #+#    #+#             */
-/*   Updated: 2021/09/17 14:26:30 by aachbaro         ###   ########.fr       */
+/*   Updated: 2021/09/22 14:28:15 by aachbaro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,20 +50,28 @@ int	check_double(int ac, char **av)
 	return (0);
 }
 
+int	check_int(int ac, char **av)
+{
+	int		i;
+	char	*tmp;
+
+	i = 1;
+	while (i < ac)
+	{
+		tmp = ft_itoa(ft_atoi(av[i]));
+		if (ft_strncmp(av[i], tmp, ft_strlen(av[i])))
+			return (-1);
+		free(tmp);
+		i++;
+	}
+	return (0);
+}
+
 void	get_stack(int ac, char **av, t_objs *stacks)
 {
 	int		i;
-	t_link	*tmp;
 
-	i = 1;
-	tmp = stacks->stack_a;
+	i = 2;
 	while (i < ac)
-	{
-		add_link(stacks->stack_a, ft_atoi(av[i]));
-//		printf("av[i] = %s\ndata = %s\n", av[i], ft_itoa(tmp->next->data));
-		if (ft_strncmp(av[i], ft_itoa(tmp->next->data), ft_strlen(av[i])) != 0)
-			printf("Error\n");
-		tmp = tmp->next;
-		i++;
-	}
+		add_link(stacks->stack_a, ft_atoi(av[i++]));
 }
