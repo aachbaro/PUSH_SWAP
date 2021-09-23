@@ -6,43 +6,59 @@
 /*   By: aachbaro <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/08 14:41:55 by aachbaro          #+#    #+#             */
-/*   Updated: 2021/09/22 14:28:02 by aachbaro         ###   ########.fr       */
+/*   Updated: 2021/09/23 16:21:14 by aachbaro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../push_swap.h"
 
-int	add_link(t_link *stack, int data)
+int	add_link(t_link **stack, int data)
 {
 	t_link	*new;
+	t_link	*tmp;
 
 	new = malloc(sizeof(t_link));
 	if (!new)
 		return (-1);
 	new->data = data;
 	new->next = NULL;
-	while (stack->next)
-		stack = stack->next;
-	stack->next = new;
+	tmp = *stack;
+	if (*stack == NULL)
+		*stack = new;
+	else
+	{
+		while (tmp->next)
+			tmp = tmp->next;
+		tmp->next = new;
+	}
 	return (0);
 }
 
-void	init_stacks(t_objs *stacks, int data)
+void	init_stacks(t_objs *stacks)
 {
-	t_link	*elem1_sa;
-
-	elem1_sa = malloc(sizeof(t_link));
-	elem1_sa->data = data;
-	elem1_sa->next = 0;
-	stacks->stack_a = elem1_sa;
+	stacks->stack_a = NULL;
+	stacks->stack_b = NULL;
 }
 
-void	aff_list(t_link *stack)
+void	aff_list(t_objs stacks)
 {
-	while (stack)
+	printf("|     a    ||     b    |\n ----------  ---------- \n");
+	while (stacks.stack_a || stacks.stack_b)
 	{
-		printf("stack->data = %d\n", stack->data);
-		stack = stack->next;
+		if (stacks.stack_a)
+		{
+			printf("|%10d|", stacks.stack_a->data);
+			stacks.stack_a = stacks.stack_a->next;
+		}
+		else
+			printf("|          |");
+		if (stacks.stack_b)
+		{
+			printf("|%10d|\n", stacks.stack_b->data);
+			stacks.stack_b = stacks.stack_b->next;
+		}
+		else
+			printf("|          |\n");
 	}
 }
 
@@ -57,4 +73,17 @@ void	free_list(t_link *stack)
 		free(stack);
 		stack = tmp;
 	}
+}
+
+int	list_len(t_link *stack)
+{
+	int	i;
+
+	i = 0;
+	while (stack)
+	{
+		i++;
+		stack = stack->next;
+	}
+	return (i);
 }

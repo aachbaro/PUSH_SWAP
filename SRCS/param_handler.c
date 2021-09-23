@@ -6,7 +6,7 @@
 /*   By: aachbaro <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/17 11:59:27 by aachbaro          #+#    #+#             */
-/*   Updated: 2021/09/22 14:28:15 by aachbaro         ###   ########.fr       */
+/*   Updated: 2021/09/23 15:47:31 by aachbaro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,8 @@ int	check_double(int ac, char **av)
 	int	j;
 
 	i = 1;
+	if (ac < 2)
+		return (-1);
 	while (i < ac)
 		if (check_nbr(av[i++]) == -1)
 			return (-1);
@@ -71,7 +73,7 @@ void	get_stack(int ac, char **av, t_objs *stacks)
 {
 	int		i;
 
-	i = 2;
+	i = 1;
 	while (i < ac)
-		add_link(stacks->stack_a, ft_atoi(av[i++]));
+		add_link(&stacks->stack_a, ft_atoi(av[i++]));
 }

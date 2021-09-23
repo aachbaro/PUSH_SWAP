@@ -2,6 +2,9 @@ NAME = push_swap
 SRC = SRCS/main.c \
 	  SRCS/utils1.c \
 	  SRCS/param_handler.c \
+	  SRCS/operations.c \
+	  SRCS/operations2.c \
+	  SRCS/operations3.c \
 
 LIBFT = -L./libft -lft
 CC = gcc
