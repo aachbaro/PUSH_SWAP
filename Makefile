@@ -5,6 +5,7 @@ SRC = SRCS/main.c \
 	  SRCS/operations.c \
 	  SRCS/operations2.c \
 	  SRCS/operations3.c \
+	  SRCS/utils2.c \
 
 LIBFT = -L./libft -lft
 CC = gcc

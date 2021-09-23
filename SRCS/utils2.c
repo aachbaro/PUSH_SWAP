@@ -1,29 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   utils2.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: aachbaro <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/09/08 12:39:37 by aachbaro          #+#    #+#             */
-/*   Updated: 2021/09/23 17:36:37 by aachbaro         ###   ########.fr       */
+/*   Created: 2021/09/23 17:28:30 by aachbaro          #+#    #+#             */
+/*   Updated: 2021/09/23 17:34:15 by aachbaro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../push_swap.h"
 
-int	main(int ac, char **av)
+int	is_sorted(t_link *stack)
 {
-	t_objs	stacks;
+	t_link	*tmp;
 
-	if (check_double(ac, av) == -1 || check_int(ac, av) == -1)
+	tmp = stack;
+	while (tmp->next)
 	{
-		printf("Error\n");
-		return (-1);
+		if (tmp->data > tmp->next->data)
+			return (0);
+		tmp = tmp->next;
 	}
-	init_stacks(&stacks);
-	get_stack(ac, av, &stacks);
-	aff_list(stacks);
-	free_list(stacks.stack_a);
-	return (0);
+	return (1);
 }

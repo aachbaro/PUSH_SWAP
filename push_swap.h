@@ -6,7 +6,7 @@
 /*   By: aachbaro <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/08 12:27:30 by aachbaro          #+#    #+#             */
-/*   Updated: 2021/09/23 17:13:19 by aachbaro         ###   ########.fr       */
+/*   Updated: 2021/09/23 17:32:16 by aachbaro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,5 +51,6 @@ void	rotate_ab(t_objs *stacks);
 void	rev_rotate_a(t_objs *stacks);
 void	rev_rotate_b(t_objs *stacks);
 void	rev_rotate_ab(t_objs *stacks);
+int		is_sorted(t_link *stack);
 
 #endif
