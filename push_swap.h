@@ -6,7 +6,7 @@
 /*   By: aachbaro <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/08 12:27:30 by aachbaro          #+#    #+#             */
-/*   Updated: 2021/09/23 17:32:16 by aachbaro         ###   ########.fr       */
+/*   Updated: 2021/09/24 18:18:12 by aachbaro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,7 @@
 typedef struct	s_link
 {
 	int				data;
+	int				val;
 	struct s_link	*next;
 	struct s_link	*prev;
 }				t_link;
@@ -33,7 +34,7 @@ typedef struct	s_objs
 
 void	init_stacks(t_objs *stacks);
 void	aff_list(t_objs stacks);
-int		add_link(t_link **stack, int data);
+int		add_link(t_link **stack, int data, int val);
 void	free_list(t_link *stack);
 int		list_len(t_link *stack);
 int		check_nbr(char *str);
@@ -52,5 +53,8 @@ void	rev_rotate_a(t_objs *stacks);
 void	rev_rotate_b(t_objs *stacks);
 void	rev_rotate_ab(t_objs *stacks);
 int		is_sorted(t_link *stack);
+void	get_val(t_objs *stacks);
+int		get_median(t_link *stack);
+void	sort_med(t_objs *stacks, int med);
 
 #endif

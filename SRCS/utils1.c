@@ -6,13 +6,13 @@
 /*   By: aachbaro <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/08 14:41:55 by aachbaro          #+#    #+#             */
-/*   Updated: 2021/09/23 16:21:14 by aachbaro         ###   ########.fr       */
+/*   Updated: 2021/09/24 18:17:59 by aachbaro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../push_swap.h"
 
-int	add_link(t_link **stack, int data)
+int	add_link(t_link **stack, int data, int val)
 {
 	t_link	*new;
 	t_link	*tmp;
@@ -21,6 +21,7 @@ int	add_link(t_link **stack, int data)
 	if (!new)
 		return (-1);
 	new->data = data;
+	new->val = val;
 	new->next = NULL;
 	tmp = *stack;
 	if (*stack == NULL)
@@ -47,14 +48,14 @@ void	aff_list(t_objs stacks)
 	{
 		if (stacks.stack_a)
 		{
-			printf("|%10d|", stacks.stack_a->data);
+			printf("|%10d|", stacks.stack_a->val);
 			stacks.stack_a = stacks.stack_a->next;
 		}
 		else
 			printf("|          |");
 		if (stacks.stack_b)
 		{
-			printf("|%10d|\n", stacks.stack_b->data);
+			printf("|%10d|\n", stacks.stack_b->val);
 			stacks.stack_b = stacks.stack_b->next;
 		}
 		else

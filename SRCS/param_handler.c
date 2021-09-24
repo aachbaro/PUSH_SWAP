@@ -6,7 +6,7 @@
 /*   By: aachbaro <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/17 11:59:27 by aachbaro          #+#    #+#             */
-/*   Updated: 2021/09/23 15:47:31 by aachbaro         ###   ########.fr       */
+/*   Updated: 2021/09/24 18:21:21 by aachbaro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,5 +75,5 @@ void	get_stack(int ac, char **av, t_objs *stacks)
 
 	i = 1;
 	while (i < ac)
-		add_link(&stacks->stack_a, ft_atoi(av[i++]));
+		add_link(&stacks->stack_a, ft_atoi(av[i++]), 0);
 }

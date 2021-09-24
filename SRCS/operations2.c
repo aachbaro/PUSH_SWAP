@@ -6,7 +6,7 @@
 /*   By: aachbaro <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/23 16:00:34 by aachbaro          #+#    #+#             */
-/*   Updated: 2021/09/23 17:08:21 by aachbaro         ###   ########.fr       */
+/*   Updated: 2021/09/24 18:20:35 by aachbaro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ void	rotate_a(t_objs *stacks)
 		return ;
 	tmp = stacks->stack_a;
 	stacks->stack_a = stacks->stack_a->next;
-	add_link(&stacks->stack_a, tmp->data);
+	add_link(&stacks->stack_a, tmp->data, tmp->val);
 	free(tmp);
 	printf("ra\n");
 }
@@ -35,7 +35,7 @@ void	rotate_b(t_objs *stacks)
 		return ;
 	tmp = stacks->stack_b;
 	stacks->stack_b = stacks->stack_b->next;
-	add_link(&stacks->stack_b, tmp->data);
+	add_link(&stacks->stack_b, tmp->data, tmp->val);
 	free(tmp);
 	printf("rb\n");
 }
@@ -49,11 +49,11 @@ void	rotate_ab(t_objs *stacks)
 		return ;
 	tmp = stacks->stack_a;
 	stacks->stack_a = stacks->stack_a->next;
-	add_link(&stacks->stack_a, tmp->data);
+	add_link(&stacks->stack_a, tmp->data, tmp->val);
 	free(tmp);
 	tmp = stacks->stack_b;
 	stacks->stack_b = stacks->stack_b->next;
-	add_link(&stacks->stack_b, tmp->data);
+	add_link(&stacks->stack_b, tmp->data, tmp->val);
 	free(tmp);
 	printf("rr\n");
 }
