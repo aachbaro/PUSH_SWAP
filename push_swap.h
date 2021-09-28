@@ -6,7 +6,7 @@
 /*   By: aachbaro <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/08 12:27:30 by aachbaro          #+#    #+#             */
-/*   Updated: 2021/09/24 18:18:12 by aachbaro         ###   ########.fr       */
+/*   Updated: 2021/09/28 13:48:24 by aachbaro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,8 +28,8 @@ typedef struct	s_link
 
 typedef struct	s_objs
 {
-	t_link	*stack_a;
-	t_link	*stack_b;
+	t_link	*a;
+	t_link	*b;
 }				t_objs;
 
 void	init_stacks(t_objs *stacks);
@@ -56,5 +56,9 @@ int		is_sorted(t_link *stack);
 void	get_val(t_objs *stacks);
 int		get_median(t_link *stack);
 void	sort_med(t_objs *stacks, int med);
+void	sort_manager(t_objs *stacks);
+void	sort_two(t_objs *stacks);
+void	sort_three(t_objs *stacks);
+void	sort_five(t_objs *stacks);
 
 #endif

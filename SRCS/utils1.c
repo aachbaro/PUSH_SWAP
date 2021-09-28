@@ -6,7 +6,7 @@
 /*   By: aachbaro <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/08 14:41:55 by aachbaro          #+#    #+#             */
-/*   Updated: 2021/09/24 18:17:59 by aachbaro         ###   ########.fr       */
+/*   Updated: 2021/09/28 13:47:29 by aachbaro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,26 +37,26 @@ int	add_link(t_link **stack, int data, int val)
 
 void	init_stacks(t_objs *stacks)
 {
-	stacks->stack_a = NULL;
-	stacks->stack_b = NULL;
+	stacks->a = NULL;
+	stacks->b = NULL;
 }
 
 void	aff_list(t_objs stacks)
 {
 	printf("|     a    ||     b    |\n ----------  ---------- \n");
-	while (stacks.stack_a || stacks.stack_b)
+	while (stacks.a || stacks.b)
 	{
-		if (stacks.stack_a)
+		if (stacks.a)
 		{
-			printf("|%10d|", stacks.stack_a->val);
-			stacks.stack_a = stacks.stack_a->next;
+			printf("|%10d|", stacks.a->val);
+			stacks.a = stacks.a->next;
 		}
 		else
 			printf("|          |");
-		if (stacks.stack_b)
+		if (stacks.b)
 		{
-			printf("|%10d|\n", stacks.stack_b->val);
-			stacks.stack_b = stacks.stack_b->next;
+			printf("|%10d|\n", stacks.b->val);
+			stacks.b = stacks.b->next;
 		}
 		else
 			printf("|          |\n");
