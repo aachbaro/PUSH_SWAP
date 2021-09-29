@@ -20,31 +20,41 @@ void	sort_two(t_objs *stacks)
 
 void	sort_three(t_objs *stacks)
 {
-	int	place_one;
-	t_link *tmp;
-
-	place_one = 1;
-	tmp = stacks->a;
-	while (tmp->val != 1)
+	if (stacks->a->val == 1 && stacks->a->next->val == 3)
 	{
-		tmp = tmp->next;
-		place_one++;
+		swap_a(stacks);
+		rotate_a(stacks);
 	}
-	if (place_one == 3 && stack+)
+	if (stacks->a->val == 2 && stacks->a->next->val == 3)
+		rev_rotate_a(stacks);
+	if (stacks->a->val == 2 && stacks->a->next->val == 1)
+		swap_a(stacks);
+	if (stacks->a->val == 3 && stacks->a->next->val == 2)
+	{
+		swap_a(stacks);
+		rev_rotate_a(stacks);
+	}
+	if (stacks->a->val == 3 && stacks->a->next->val == 1)
+		rotate_a(stacks);
 }
 
 void	sort_five(t_objs *stacks)
 {
-	int		i;
-	int		med;
-	t_link	*tmp;
+	int			med;
+	t_link		*tmp;
 
-	i = 0;
-	med = get_median(stacks->a);
-	tmp = stacks->a;
-	while (i < med)
+	while (list_len(stacks->a) > 2)
 	{
-		if (tmp->data < med)
-			push_b(stacks);
+		med = get_median(stacks->a);
+		tmp = stacks->a;
+		while (tmp)
+		{
+			if (tmp->val < med)
+			{
+				get_out(stacks, tmp->val);
+				tmp = stacks->a;
+			}
+			tmp = tmp->next;
+		}
 	}
 }

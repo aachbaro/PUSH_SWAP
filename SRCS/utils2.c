@@ -65,5 +65,25 @@ int	get_median(t_link *stack)
 			max = tmp->val;
 		tmp = tmp->next;
 	}
-	return (((max - min) / 2) + 1);
+	return (((max - min) / 2) + min);
+}
+
+void	get_out(t_objs *stacks, int val)
+{
+	int	pos;
+	t_link	*tmp;
+
+	tmp = stacks->a;
+	while (tmp->val != val)
+	{
+		tmp = tmp->next;
+		pos++;
+	}
+	if (pos < list_len(stacks->a) / 2)
+		while (stacks->a->val != val)
+			rotate_a(stacks);
+	else
+		while (stacks->a->val != val)
+			rev_rotate_a(stacks);
+	push_b(stacks);
 }
