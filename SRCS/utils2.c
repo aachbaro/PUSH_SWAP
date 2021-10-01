@@ -6,7 +6,7 @@
 /*   By: aachbaro <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/23 17:28:30 by aachbaro          #+#    #+#             */
-/*   Updated: 2021/09/28 13:48:02 by aachbaro         ###   ########.fr       */
+/*   Updated: 2021/10/01 13:57:19 by aachbaro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,6 +74,7 @@ void	get_out(t_objs *stacks, int val)
 	t_link	*tmp;
 
 	tmp = stacks->a;
+	pos = 0;
 	while (tmp->val != val)
 	{
 		tmp = tmp->next;

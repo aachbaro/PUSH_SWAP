@@ -6,7 +6,7 @@
 /*   By: aachbaro <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/08 12:27:30 by aachbaro          #+#    #+#             */
-/*   Updated: 2021/09/28 13:48:24 by aachbaro         ###   ########.fr       */
+/*   Updated: 2021/10/01 14:08:42 by aachbaro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,5 +61,6 @@ void	sort_manager(t_objs *stacks);
 void	sort_two(t_objs *stacks);
 void	sort_three(t_objs *stacks);
 void	sort_five(t_objs *stacks);
+void	sort_fivetwo(t_objs *stacks);
 
 #endif
