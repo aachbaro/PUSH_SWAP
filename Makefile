@@ -7,7 +7,8 @@ SRC = SRCS/main.c \
 	  SRCS/operations3.c \
 	  SRCS/utils2.c \
 	  SRCS/manager.c \
-	  SRCS/sort_algo.c
+	  SRCS/sort_algo.c \
+	  SRCS/sort_more.c \
 
 LIBFT = -L./LIBFT -lft
 CC = gcc

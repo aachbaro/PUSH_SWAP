@@ -6,7 +6,7 @@
 /*   By: aachbaro <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/08 12:27:30 by aachbaro          #+#    #+#             */
-/*   Updated: 2021/10/01 14:08:42 by aachbaro         ###   ########.fr       */
+/*   Updated: 2021/10/04 18:15:46 by aachbaro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,9 +38,9 @@ int		add_link(t_link **stack, int data, int val);
 void	free_list(t_link *stack);
 int		list_len(t_link *stack);
 int		check_nbr(char *str);
-int		check_double(int ac, char **av);
-int		check_int(int ac, char **av);
-void	get_stack(int ac, char **av, t_objs *stacks);
+int		check_double(t_objs *stacks);
+int		ret_error(t_objs *stacks);
+int		get_stack(int ac, char **av, t_objs *stacks);
 void	swap_a(t_objs *stacks);
 void	swap_b(t_objs *stacks);
 void	swap_ab(t_objs *stacks);
@@ -52,15 +52,15 @@ void	rotate_ab(t_objs *stacks);
 void	rev_rotate_a(t_objs *stacks);
 void	rev_rotate_b(t_objs *stacks);
 void	rev_rotate_ab(t_objs *stacks);
-int	is_sorted(t_link *stack);
+int		is_sorted(t_link *stack);
 void	get_val(t_objs *stacks);
-int	get_median(t_link *stack);
-void	sort_med(t_objs *stacks, int med);
+int		get_median(t_link *stack);
 void	get_out(t_objs *stacks, int val);
 void	sort_manager(t_objs *stacks);
 void	sort_two(t_objs *stacks);
 void	sort_three(t_objs *stacks);
 void	sort_five(t_objs *stacks);
 void	sort_fivetwo(t_objs *stacks);
+void	sort_more(t_objs *stacks);
 
 #endif

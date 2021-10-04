@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   param_handler.c                                    :+:      :+:    :+:   */
+/*   param_handler2.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: aachbaro <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/09/17 11:59:27 by aachbaro          #+#    #+#             */
-/*   Updated: 2021/09/28 13:47:19 by aachbaro         ###   ########.fr       */
+/*   Created: 2021/10/04 17:31:13 by aachbaro          #+#    #+#             */
+/*   Updated: 2021/10/04 18:05:38 by aachbaro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,10 +14,18 @@
 
 int	check_nbr(char *str)
 {
-	int	i;
+	int		i;
+	char	*tmp;
 
 	i = 0;
-	while(str[i])
+	tmp = ft_itoa(ft_atoi(str));
+	if (ft_strncmp(str, tmp, ft_strlen(str)))
+	{
+		free(tmp);
+		return (-1);
+	}
+	free(tmp);
+	while (str[i])
 	{
 		if (!ft_isdigit(str[i]) && str[i] != '-')
 			return (-1);
@@ -26,54 +34,56 @@ int	check_nbr(char *str)
 	return (0);
 }
 
-int	check_double(int ac, char **av)
+void	free_tab(char **tab)
 {
 	int	i;
-	int	j;
 
-	i = 1;
-	if (ac < 2)
-		return (-1);
-	while (i < ac)
-		if (check_nbr(av[i++]) == -1)
-			return (-1);
+	i = 0;
+	while (tab[i])
+		free(tab[i++]);
+	free(tab);
+}
+
+int	get_stack(int ac, char **av, t_objs *stacks)
+{
+	int		i;
+	int		j;
+	char	**tab;
+
 	i = 1;
 	while (i < ac)
 	{
-		j = i + 1;
-		while (j < ac)
+		tab = ft_split(av[i], ' ');
+		j = 0;
+		while (tab[j])
 		{
-			if (ft_atoi(av[i]) == ft_atoi(av[j]))
+			if (check_nbr(tab[j]) == -1)
 				return (-1);
+			add_link(&stacks->a, ft_atoi(tab[j]), 0);
 			j++;
 		}
+		free_tab(tab);
 		i++;
 	}
 	return (0);
 }
 
-int	check_int(int ac, char **av)
+int		check_double(t_objs *stacks)
 {
-	int		i;
-	char	*tmp;
+	t_link	*tmp;
+	t_link	*tmp2;
 
-	i = 1;
-	while (i < ac)
+	tmp = stacks->a;
+	while (tmp->next)
 	{
-		tmp = ft_itoa(ft_atoi(av[i]));
-		if (ft_strncmp(av[i], tmp, ft_strlen(av[i])))
-			return (-1);
-		free(tmp);
-		i++;
+		tmp2 = tmp->next;
+		while (tmp2)
+		{
+			if (tmp->data == tmp2->data)
+				return (-1);
+			tmp2 = tmp2->next;
+		}
+		tmp = tmp->next;
 	}
 	return (0);
-}
-
-void	get_stack(int ac, char **av, t_objs *stacks)
-{
-	int		i;
-
-	i = 1;
-	while (i < ac)
-		add_link(&stacks->a, ft_atoi(av[i++]), 0);
 }

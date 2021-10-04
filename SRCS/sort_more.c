@@ -1,27 +1,36 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   manager.c                                          :+:      :+:    :+:   */
+/*   sort_more.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: aachbaro <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/09/28 11:39:26 by aachbaro          #+#    #+#             */
-/*   Updated: 2021/10/04 14:04:03 by aachbaro         ###   ########.fr       */
+/*   Created: 2021/10/04 12:27:47 by aachbaro          #+#    #+#             */
+/*   Updated: 2021/10/04 14:07:15 by aachbaro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../push_swap.h"
 
-void	sort_manager(t_objs *stacks)
+void	sort_more(t_objs *stacks)
 {
-	if (is_sorted(stacks->a))
-		return ;
-	else if (list_len(stacks->a) <= 2)
-		sort_two(stacks);
-	else if (list_len(stacks->a) == 3)
-		sort_three(stacks);
-	else if (list_len(stacks->a) <= 5)
-		sort_five(stacks);
-	else
-		sort_more(stacks);
+	int		med;
+	t_link	*tmp;
+
+	med = 0;
+	while (list_len(stacks->a) > 2)
+	{
+		tmp = stacks->a;
+		med = get_median(stacks->a);
+		while (tmp)
+		{
+			if (tmp->val < med)
+			{
+				get_out(stacks, tmp->val);
+				tmp = stacks->a;
+			}
+			else
+				tmp = tmp->next;
+		}
+	}
 }
